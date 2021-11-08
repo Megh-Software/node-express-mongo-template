@@ -4,6 +4,6 @@ export const message = {
         connection_falied: "Error Established Connection"
     },
     application: {
-        listening: "listening on port"
+        listening: "Listening on port"
     }
 }

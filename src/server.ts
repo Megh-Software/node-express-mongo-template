@@ -2,13 +2,10 @@ import { initApp } from "./app";
 import { message } from "./configs/messages";
 import { MongoSetup } from "./core/db";
 import { MongoConnection } from "./types";
-import dotenv from 'dotenv';
-import path from "path"
-dotenv.config({ path: path.join(__dirname, '.env') });
-
+import './configs/dtenv_config';
 
 /**
- * MongoDB initialize
+ * MongoDB initialize...
  */
 MongoSetup()
     .then((data: MongoConnection) => {

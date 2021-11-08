@@ -1,6 +1,5 @@
 import mongoose from "mongoose";
 
-
 const convert = <T extends mongoose.Document>(model: T, destination: any): any => {
     const source = Object.create(model)
     const destKeys = Object.keys(destination)

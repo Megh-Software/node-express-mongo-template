@@ -1,16 +1,14 @@
 import express, { Application, NextFunction, Request, Response } from "express";
+import cors from "cors";
 import router from "./routes";
 import compression from "compression";
-
-const shouldCompress = (req: Request, res: Response) => {
-    if (req.headers['x-no-compression']) return false;
-    return compression.filter(req, res);
-}
-
+import AppConfig from "./configs/app.config";
 
 export const initApp = () => {
     let app: Application = express();
 
+    app.use(cors({ origin: AppConfig.ALLOWED_ORIGIN.split(" ") }));
+    app.use(express.static('public'))
     app.use(compression({ filter: shouldCompress }));
     app.use(express.json());
     app.use("/api", router);
@@ -29,3 +27,8 @@ const routeErrorHandler = (err: any, req: Request, res: Response, next: NextFunc
     res.status(500)
     res.send(`Error Occurred! ${err.message}`)
 };
+
+const shouldCompress = (req: Request, res: Response) => {
+    if (req.headers['x-no-compression']) return false;
+    return compression.filter(req, res);
+}

@@ -1,4 +1,4 @@
-import 'dotenv/config'
+import './dtenv_config';
 
 export const DB = {
     DB_URL: process.env.DB_URL || "localhost",
