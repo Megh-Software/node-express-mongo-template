@@ -1,6 +1,6 @@
 import express, { Request, Response, Router } from "express";
 import { IRoute } from "./types";
-import { routes as studentRoutes } from "./controllers/student.controller"
+import StudentRoutes from "./routes/student.routes"
 
 const getHandler = (req: Request, res: Response) => {
     res.send("Yeah it's hello....");
@@ -12,7 +12,7 @@ export const routes: Array<IRoute> = [
         path: "/hello",
         handler: getHandler
     },
-    ...studentRoutes
+    ...StudentRoutes
 ]
 
 let router: Router = express.Router();
