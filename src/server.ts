@@ -3,6 +3,7 @@ import { message } from "./configs/messages";
 import { MongoSetup } from "./core/db";
 import { MongoConnection } from "./types";
 import './configs/dtenv_config';
+import { ConnectToWebSocketServer } from "./websocket/socketServer";
 
 /**
  * MongoDB initialize...
@@ -14,11 +15,4 @@ MongoSetup()
 
 let app = initApp();
 
-/**
- * Listening to application request
- */
-const PORT = process.env.PORT || 3000;
-
-app.listen(PORT, () => {
-    console.log(`${message.application.listening} ${PORT}`);
-})
+ConnectToWebSocketServer(app);
