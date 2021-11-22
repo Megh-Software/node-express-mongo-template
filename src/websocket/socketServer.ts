@@ -1,5 +1,5 @@
 import * as WebSocketServer from "ws";
-import http from "http";
+import * as http from "http";
 import { Application } from "express";
 import { RawData } from "ws";
 import { message } from "../configs/messages";
@@ -35,11 +35,11 @@ export const ConnectToWebSocketServer = (app: Application) => {
 
     wss.on('connection', (ws: WebSocketServer.WebSocket) => {
 
-        ws.isAlive = true;
+     //   ws.isAlive = true;
 
-        ws.on('pong', () => {
-            ws.isAlive = true;
-        });
+     //   ws.on('pong', () => {
+      //      ws.isAlive = true;
+      //  });
 
         ws.on("message", (data: RawData, isBinarry: boolean) => {
             if (data.toString().toLowerCase() == "hello") {
@@ -84,10 +84,10 @@ const clientConnectionChecking = (wss: WebSocketServer.Server) => {
     interval = setInterval(() => {
         wss.clients.forEach((ws: WebSocketServer.WebSocket) => {
 
-            if (!ws.isAlive) return ws.terminate();
+          //  if (!ws.isAlive) return ws.terminate();
 
-            ws.isAlive = false;
-            ws.ping(null, false, true);
+           // ws.isAlive = false;
+           // ws.ping(null, false, true);
         });
     }, 10000);
 }

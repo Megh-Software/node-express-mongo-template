@@ -1,4 +1,5 @@
-import express, { Request, Response, Router } from "express";
+import * as express from "express";
+import { Request, Response, Router } from "express";
 import { IRoute } from "./types";
 import StudentRoutes from "./routes/student.routes"
 

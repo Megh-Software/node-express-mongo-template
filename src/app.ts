@@ -1,8 +1,10 @@
-import express, { Application, NextFunction, Request, Response } from "express";
-import cors from "cors";
+import * as express from "express";
+import { Application, NextFunction, Request, Response } from "express";
+import * as cors from "cors";
 import router from "./routes";
-import compression from "compression";
+import * as compression from "compression";
 import AppConfig from "./configs/app.config";
+import * as bodyParser from "body-parser";
 
 export const initApp = () => {
     let app: Application = express();
@@ -10,6 +12,7 @@ export const initApp = () => {
     app.use(cors({ origin: AppConfig.ALLOWED_ORIGIN.split(" ") }));
     app.use(express.static('public'))
     app.use(compression({ filter: shouldCompress }));
+    app.use(bodyParser.urlencoded({ extended: true }));
     app.use(express.json());
     app.use("/api", router);
     app.use("/", rootRouteHandler);

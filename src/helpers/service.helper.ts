@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import * as mongoose from 'mongoose';
 
 const convert = <T extends mongoose.Document>(model: T, destination: any): any => {
     const source = Object.create(model)

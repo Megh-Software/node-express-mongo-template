@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import * as mongoose from "mongoose";
 import { Student } from "../models/student.model";
 import { StudentSchema } from "./schema";
 

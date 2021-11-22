@@ -4,6 +4,7 @@ import { MongoSetup } from "./core/db";
 import { MongoConnection } from "./types";
 import './configs/dtenv_config';
 import { ConnectToWebSocketServer } from "./websocket/socketServer";
+import "./core/db.mysql";
 
 /**
  * MongoDB initialize...
